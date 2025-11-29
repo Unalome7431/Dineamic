@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fnb.autoCashierKitchenSystem.controllers.CashierController">
+
+    <!-- 1. HEADER SECTION -->
+    <top>
+        <HBox fx:id="headerBar" alignment="CENTER_LEFT" spacing="20.0" styleClass="header-bar" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fx:id="brandLogo" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@mcdonalds-logo-png-1.jpg" />
+                    </image>
+                </ImageView>
+                <Label fx:id="brandNameLabel" styleClass="header-title" text="Mc'Donalds" />
+
+                <Region HBox.hgrow="ALWAYS" />
+
+                <Label text="Table No:" textFill="#FFFFFF">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Spinner fx:id="tableSpinner" editable="true" prefWidth="80.0" styleClass="category-combo" />
+            </children>
+        </HBox>
+    </top>
+
+    <!-- 2. MAIN CONTENT -->
+    <center>
+        <HBox spacing="0.0" BorderPane.alignment="CENTER">
+            <children>
+
+                <!-- LEFT SIDE: MENU AREA -->
+                <VBox spacing="15.0" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </padding>
+                    <children>
+                        <!-- Category Filter -->
+                        <HBox alignment="CENTER_LEFT">
+                            <children>
+                                <Label text="Menu Categories" textFill="#374151">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <Region HBox.hgrow="ALWAYS" />
+                                <ComboBox fx:id="categoryCombo" prefWidth="200.0" promptText="All Items" styleClass="category-combo" />
+                            </children>
+                        </HBox>
+
+                        <!-- Scrollable Grid -->
+                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: transparent; -fx-background: transparent;" VBox.vgrow="ALWAYS">
+                            <content>
+                                <TilePane fx:id="menuGrid" hgap="15.0" prefColumns="3" vgap="15.0">
+                                    <padding>
+                                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                    <children>
+                                        <!-- Buttons added dynamically -->
+                                    </children>
+                                </TilePane>
+                            </content>
+                        </ScrollPane>
+                    </children>
+                </VBox>
+
+                <!-- THE FIXED SEPARATOR -->
+                <Separator orientation="VERTICAL" prefHeight="200.0" />
+
+                <!-- RIGHT SIDE: TICKET AREA -->
+                <VBox minWidth="350.0" prefWidth="350.0" spacing="15.0" styleClass="ticket-pane">
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </padding>
+                    <children>
+                        <Label text="Current Order" textFill="#374151">
+                            <font>
+                                <Font name="System Bold" size="20.0" />
+                            </font>
+                        </Label>
+
+                        <Separator prefWidth="200.0" />
+
+                        <!-- Ticket Items List -->
+                        <ListView fx:id="ticketList" styleClass="ticket-list" VBox.vgrow="ALWAYS" />
+
+                        <!-- Footer/Total Section -->
+                        <VBox spacing="10.0">
+                            <children>
+                                <HBox>
+                                    <children>
+                                        <Label text="Subtotal" textFill="#6b7280" />
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <!-- ADDED ID HERE -->
+                                        <Label fx:id="subtotalLabel" text="\$0.00" textFill="#374151" />
+                                    </children>
+                                </HBox>
+                                <HBox>
+                                    <children>
+                                        <Label text="Tax (10%)" textFill="#6b7280" />
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <!-- ADDED ID HERE -->
+                                        <Label fx:id="taxLabel" text="\$0.00" textFill="#374151" />
+                                    </children>
+                                </HBox>
+                                <Separator prefWidth="200.0" />
+                                <HBox>
+                                    <children>
+                                        <Label text="Total Amount" textFill="#111827">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <Label fx:id="totalLabel" text="\$0.00" textFill="#4f46e5">
+                                            <font>
+                                                <Font name="System Bold" size="24.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <!-- Pay Button -->
+                        <Button fx:id="payButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="55.0" styleClass="btn" text="Charge Order" />
+                    </children>
+                </VBox>
+
+            </children>
+        </HBox>
+    </center>
+</BorderPane>

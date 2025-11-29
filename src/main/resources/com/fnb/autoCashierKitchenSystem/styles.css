@@ -1,0 +1,172 @@
+/* GLOBAL FONTS & BACKGROUNDS */
+.root {
+    -fx-font-family: "Segoe UI", Helvetica, sans-serif;
+    -fx-background-color: #F3F4F6; /* Light Gray Background */
+}
+
+/* --- HEADER --- */
+.header-bar {
+    -fx-background-color: #4338CA;
+    -fx-padding: 15;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);
+}
+
+.header-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* LOGIN NETWORK */
+.ip-text {
+    -fx-text-fill: #374151;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+.ip-input {
+    -fx-pref-height: 50px;
+    -fx-pref-width: 500px;
+    -fx-max-height: 50px;
+    -fx-max-width: 500px;
+    -fx-font-size: 20px;
+}
+
+/* CASHIER SIDE */
+/* --- LEFT SIDE: MENU --- */
+.category-combo {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #D1D5DB;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 2;
+}
+
+/* --- PRODUCT BUTTONS (THE CARDS) --- */
+.menu-item-button {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 12;
+    -fx-border-color: #E5E7EB;
+    -fx-border-radius: 12;
+    -fx-cursor: hand;
+
+    /* Subtle shadow for depth */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);
+}
+
+/* HOVER STATE: Lift up and glow */
+.menu-item-button:hover {
+    -fx-background-color: #F9FAFB;
+    -fx-border-color: #4F46E5; /* Indigo Accent */
+    -fx-translate-y: -3; /* Moves button up 3 pixels */
+    -fx-effect: dropshadow(three-pass-box, rgba(79, 70, 229, 0.3), 15, 0, 0, 5);
+}
+
+/* PRESSED STATE: Click effect */
+.menu-item-button:pressed {
+    -fx-background-color: #EEF2FF;
+    -fx-translate-y: 1;
+    -fx-effect: none;
+}
+
+.price-tag {
+    -fx-text-fill: #4F46E5; /* Indigo Price */
+    -fx-font-weight: bold;
+}
+
+/* --- RIGHT SIDE: TICKET --- */
+.ticket-pane {
+    -fx-background-color: #FFFFFF;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, -5, 0);
+}
+
+.ticket-list {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+.ticket-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 10;
+    -fx-border-color: transparent transparent #E5E7EB transparent;
+}
+
+.delete-btn {
+    -fx-background-color: #F3F4F6;
+    -fx-border-color: transparent;
+    -fx-border-radius: 10;
+    -fx-text-fill: #EF4444;
+    -fx-cursor: hand;
+    -fx-font-size: 16px;
+}
+
+.delete-btn:hover {
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #EF4444;
+}
+
+/* --- ACTION BUTTONS --- */
+.btn {
+    -fx-background-color: #4F46E5; /* Indigo Main */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.btn:hover {
+    -fx-background-color: #4338CA; /* Darker Indigo */
+}
+
+/* --- KITCHEN DISPLAY SPECIFIC STYLES --- */
+
+/* The container for a single order ticket */
+.kitchen-ticket {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 2);
+}
+
+/* The top bar of the ticket (Table # and Time) */
+.ticket-header {
+    -fx-background-color: #4338CA; /* Default Gray */
+    -fx-background-radius: 8 8 0 0; /* Round top corners only */
+    -fx-padding: 10;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #D1D5DB;
+}
+
+/* Text inside the ticket body */
+.order-item-text {
+    -fx-font-size: 16px;
+    -fx-text-fill: #1F2937;
+    -fx-font-weight: bold;
+}
+
+.modifier-text {
+    -fx-font-size: 14px;
+    -fx-text-fill: #EF4444; /* Red text for special instructions */
+    -fx-font-style: italic;
+    -fx-padding: 0 0 0 20; /* Indent modifiers */
+}
+
+/* The big button at the bottom */
+.bump-btn {
+    -fx-background-color: #10B981; /* Emerald Green */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 0 0 8 8; /* Round bottom corners only */
+    -fx-cursor: hand;
+}
+
+.bump-btn:hover {
+    -fx-background-color: #059669;
+}
+
+.bump-btn:pressed {
+    -fx-background-color: #047857;
+}

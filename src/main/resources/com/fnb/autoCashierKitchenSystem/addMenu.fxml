@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="340.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fnb.autoCashierKitchenSystem.controllers.AddNewMenuController">
+    <center>
+        <VBox spacing="12.0" style="-fx-background-color: #F3F4F6;" BorderPane.alignment="CENTER">
+            <children>
+
+                <!-- ROW 1: Name and Price Side-by-Side -->
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <children>
+                        <Label text="Name:">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <!-- Name Field Grows to fill space -->
+                        <TextField fx:id="nameField" promptText="Burger" HBox.hgrow="ALWAYS">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </TextField>
+
+                        <Label text="Price:">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <!-- Price Field is fixed small width -->
+                        <TextField fx:id="priceField" prefWidth="70.0" promptText="0.00">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </TextField>
+                    </children>
+                </HBox>
+
+                <!-- ROW 2: Category -->
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <children>
+                        <Label text="Category:">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <ComboBox fx:id="categoryField" maxWidth="1.7976931348623157E308" styleClass="category-combo" HBox.hgrow="ALWAYS" />
+                    </children>
+                </HBox>
+
+                <!-- ROW 3: Image and Buttons -->
+                <HBox spacing="15.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <!-- Image Preview Box -->
+                        <VBox style="-fx-border-color: #D1D5DB; -fx-border-radius: 5; -fx-padding: 2;">
+                            <children>
+                                <ImageView fx:id="imagePreview" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" />
+                            </children>
+                        </VBox>
+
+                        <!-- Buttons Stack -->
+                        <VBox spacing="8.0" HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
+                            <children>
+                                <Button fx:id="setImageButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #E5E7EB; -fx-text-fill: #374151;" text="Choose Image..." />
+                                <Button fx:id="addButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="btn" text="Save Item" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+            </children>
+            <padding>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+            </padding>
+        </VBox>
+    </center>
+</BorderPane>

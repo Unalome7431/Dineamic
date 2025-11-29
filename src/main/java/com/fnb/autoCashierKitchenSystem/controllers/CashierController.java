@@ -219,7 +219,7 @@ public class CashierController {
         ImageView imageView = new ImageView();
         imageView.setFitWidth(80); imageView.setFitHeight(80);
 
-        // --- NEW IMAGE LOADING LOGIC --- TES
+        // --- NEW IMAGE LOADING LOGIC ---
         String fileName = item.getImagePath();
         if (fileName != null && !fileName.equals("DEFAULT")) {
             File localFile = new File(LOCAL_CACHE_DIR, fileName);

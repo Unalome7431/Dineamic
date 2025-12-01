@@ -13,7 +13,6 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <javafx.version>21.0.2</javafx.version>
-        <!-- Default Main Class (Cashier) -->
         <main.class>com.fnb.autoCashierKitchenSystem.CashierMainApplication</main.class>
     </properties>
 
@@ -53,7 +52,6 @@
                 </configuration>
             </plugin>
 
-            <!-- PLUGIN 1: JavaFX Maven Plugin (For Development: mvn javafx:run) -->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
@@ -63,14 +61,12 @@
                 </configuration>
             </plugin>
 
-            <!-- PLUGIN 2: Shade Plugin (For Building Deployment JARs: mvn package) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.4.1</version>
                 <executions>
 
-                    <!-- Build Kitchen JAR -->
                     <execution>
                         <id>kitchen-jar</id>
                         <phase>package</phase>
@@ -84,7 +80,7 @@
                                     <mainClass>com.fnb.autoCashierKitchenSystem.KitchenLauncher</mainClass>
                                 </transformer>
                             </transformers>
-                            <!-- Filter signatures to avoid SecurityException -->
+
                             <filters>
                                 <filter>
                                     <artifact>*:*</artifact>
@@ -98,7 +94,6 @@
                         </configuration>
                     </execution>
 
-                    <!-- Build Cashier JAR -->
                     <execution>
                         <id>cashier-jar</id>
                         <phase>package</phase>
@@ -130,7 +125,6 @@
         </plugins>
     </build>
 
-    <!-- PROFILES: Allows switching between apps for 'mvn javafx:run' -->
     <profiles>
         <profile>
             <id>kitchen</id>

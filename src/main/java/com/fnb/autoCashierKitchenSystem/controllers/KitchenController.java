@@ -272,7 +272,7 @@ public class KitchenController {
             case "GET_ICON_TIMESTAMP": out.writeLong(iconLastModified); break;
             case "GET_NAME":
                 File nameFile = new File(DATA_DIR, NAME_FILE);
-                out.writeObject(nameFile.exists() ? Files.readString(nameFile.toPath()) : "My Restaurant");
+                out.writeObject(nameFile.exists() ? Files.readString(nameFile.toPath()) : "Dineamic");
                 break;
             case "GET_NAME_TIMESTAMP": out.writeLong(nameLastModified); break;
             case "GET_MENU": out.writeObject(fullMenu); break;

@@ -81,7 +81,6 @@ public class NetworkController {
             URL url = getClass().getResource("/com/fnb/autoCashierKitchenSystem/cashier.fxml");
             Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/fnb/autoCashierKitchenSystem/utensil.png")));
 
-
             FXMLLoader loader = new FXMLLoader(url);
             Parent root = loader.load();
 

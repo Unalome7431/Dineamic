@@ -27,6 +27,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -100,7 +101,11 @@ public class AdminController {
 
     private void handlePasswordChange() {
         TextInputDialog dialog = new TextInputDialog("");
-        dialog.setTitle("Change Cashier Password");
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/fnb/autoCashierKitchenSystem/utensil.png")));
+
+        Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(icon);
+        dialog.setTitle("Dineamic: Change Cashier Password");
         dialog.setHeaderText("Set password for Cashier Login");
         dialog.setContentText("New Password:");
         Optional<String> result = dialog.showAndWait();
@@ -140,7 +145,7 @@ public class AdminController {
     private void handleAdd() {
         try {
             URL url = getClass().getResource("/com/fnb/autoCashierKitchenSystem/addMenu.fxml");
-            if (url == null) return;
+            Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/fnb/autoCashierKitchenSystem/utensil.png")));
 
             FXMLLoader loader = new FXMLLoader(url);
             Parent root = loader.load();
@@ -150,7 +155,8 @@ public class AdminController {
             controller.setThemeColor(currentThemeHex);
 
             Stage stage = new Stage();
-            stage.setTitle("Add New Menu Item");
+            stage.setTitle("Dineamic: Add New Menu Item");
+            stage.getIcons().add(icon);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root));
             stage.showAndWait();
@@ -238,21 +244,17 @@ public class AdminController {
         ImageView imageView = new ImageView();
         imageView.setFitWidth(80); imageView.setFitHeight(80);
 
-        // --- UPDATED IMAGE LOADING FOR ADMIN PREVIEW ---
         String fileName = item.getImagePath();
         if (fileName != null && !fileName.equals("DEFAULT")) {
-            // Admin is on the same PC as Kitchen, so we check DATA_DIR directly
             File imgFile = new File(KitchenController.DATA_DIR, fileName);
             if (imgFile.exists()) {
                 imageView.setImage(new Image(imgFile.toURI().toString()));
             }
         } else {
-            // Default icon
             try {
-                imageView.setImage(new Image(getClass().getResource("/utensil-icon.jpg").toExternalForm()));
+                imageView.setImage(new Image(getClass().getResource("/com/fnb/autoCashierKitchenSystem/utensil.png").toExternalForm()));
             } catch (Exception e) {}
         }
-        // -----------------------------------------------
 
         centerImage(imageView, 80, 80);
         Rectangle clip = new Rectangle(80, 80);

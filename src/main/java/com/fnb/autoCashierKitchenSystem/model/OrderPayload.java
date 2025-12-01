@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-// This object represents the entire order sent to the Kitchen
 public class OrderPayload implements Serializable {
     private static final long serialVersionUID = 1L;
 

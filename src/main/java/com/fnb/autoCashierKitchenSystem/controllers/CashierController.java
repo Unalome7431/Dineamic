@@ -51,7 +51,6 @@ public class CashierController {
     private static String KITCHEN_IP;
     private static final int KITCHEN_PORT = 12345;
 
-    // Local cache for downloaded images
     private static final File LOCAL_CACHE_DIR = new File(System.getProperty("user.home"), "CashierApp_Cache");
 
     private long currentIconTimestamp = 0;
@@ -69,7 +68,6 @@ public class CashierController {
 
     @FXML
     public void initialize() {
-        // Ensure cache directory exists
         if (!LOCAL_CACHE_DIR.exists()) LOCAL_CACHE_DIR.mkdirs();
 
         SpinnerValueFactory<Integer> valueFactory =
@@ -219,24 +217,19 @@ public class CashierController {
         ImageView imageView = new ImageView();
         imageView.setFitWidth(80); imageView.setFitHeight(80);
 
-        // --- NEW IMAGE LOADING LOGIC ---
         String fileName = item.getImagePath();
         if (fileName != null && !fileName.equals("DEFAULT")) {
             File localFile = new File(LOCAL_CACHE_DIR, fileName);
             if (localFile.exists()) {
-                // If we have it, show it
                 imageView.setImage(new Image(localFile.toURI().toString()));
             } else {
-                // If we don't, download it in background
                 downloadImage(fileName, imageView);
             }
         } else {
-            // Load Default
             try {
-                imageView.setImage(new Image(getClass().getResource("/utensil-icon.jpg").toExternalForm()));
-            } catch (Exception e) {}
+                imageView.setImage(new Image(getClass().getResource("/com/fnb/autoCashierKitchenSystem/utensil.png").toExternalForm()));
+            } catch (Exception e) { e.printStackTrace();}
         }
-        // -------------------------------
 
         centerImage(imageView, 80, 80);
         Rectangle clip = new Rectangle(80, 80);
@@ -274,15 +267,12 @@ public class CashierController {
 
                 byte[] data = (byte[]) in.readObject();
                 if (data != null && data.length > 0) {
-                    // Save to local cache
                     File target = new File(LOCAL_CACHE_DIR, fileName);
                     Files.write(target.toPath(), data);
 
-                    // Update UI
                     Platform.runLater(() -> targetView.setImage(new Image(target.toURI().toString())));
                 }
             } catch (Exception e) {
-                // System.out.println("Could not fetch image: " + fileName);
             }
         }).start();
     }

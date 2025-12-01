@@ -16,24 +16,19 @@ public class TicketCell extends ListCell<CartItem> {
     private final Label priceLabel;
 
     public TicketCell() {
-        // 1. Quantity Label (Leftmost)
         quantityLabel = new Label();
-        quantityLabel.setPrefWidth(30); // Fixed width for alignment
+        quantityLabel.setPrefWidth(30);
         quantityLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #4f46e5;");
 
-        // 2. Name Label
         nameLabel = new Label();
         nameLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #374151;");
 
-        // 3. Price Label (Displays Total for that line: 2 * Price)
         priceLabel = new Label();
         priceLabel.setStyle("-fx-text-fill: #374151;");
 
-        // Spacer
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
-        // 4. Delete Button
         Button deleteButton = new Button("🗑");
         deleteButton.getStyleClass().add("delete-btn");
         deleteButton.setOnAction(event -> {
@@ -43,7 +38,6 @@ public class TicketCell extends ListCell<CartItem> {
             }
         });
 
-        // Layout: [Qty] [Name] ....spacer.... [Price] [Delete]
         content = new HBox(5);
         content.setAlignment(Pos.CENTER_LEFT);
         content.getChildren().addAll(quantityLabel, nameLabel, spacer, priceLabel, deleteButton);

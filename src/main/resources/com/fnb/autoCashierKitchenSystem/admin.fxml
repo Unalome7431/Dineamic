@@ -17,14 +17,12 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fnb.autoCashierKitchenSystem.controllers.AdminController">
 
-    <!-- TOP: ADMIN CONTROLS -->
     <top>
         <VBox>
-            <!-- 1. The Real Header (Preview) -->
             <HBox fx:id="previewHeader" alignment="CENTER_LEFT" spacing="20.0" styleClass="header-bar">
                 <children>
                     <ImageView fx:id="previewLogo" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
-                    <Label fx:id="previewName" styleClass="header-title" text="My Restaurant" />
+                    <Label fx:id="previewName" styleClass="header-title" text="Dineamic" />
                     <Region HBox.hgrow="ALWAYS" />
                     <Label text="PREVIEW MODE" textFill="WHITE" opacity="0.7">
                         <font><Font name="System Bold" size="14.0" /></font>
@@ -32,7 +30,6 @@
                 </children>
             </HBox>
 
-            <!-- 2. The Control Bar -->
             <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: #E5E7EB; -fx-padding: 10;">
                 <children>
                     <Label text="Actions:" textFill="#374151">
@@ -54,7 +51,6 @@
 
                     <Region HBox.hgrow="ALWAYS" />
 
-                    <!-- NEW: Password Label and Button -->
                     <HBox alignment="CENTER_RIGHT" spacing="10.0">
                         <Label text="Current Pass:" textFill="#6b7280" />
                         <Label fx:id="currentPasswordLabel" text="admin" textFill="#374151" style="-fx-font-weight: bold;" />
@@ -65,7 +61,6 @@
         </VBox>
     </top>
 
-    <!-- CENTER: PREVIEW OF CASHIER GRID -->
     <center>
         <HBox spacing="0.0" BorderPane.alignment="CENTER">
             <children>

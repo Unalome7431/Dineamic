@@ -45,7 +45,6 @@ public class KitchenController {
     private ServerSocket serverSocket;
     private boolean isRunning = true;
 
-    // Folder for storing images
     public static final String DATA_DIR = System.getProperty("user.home") + File.separator + "CashierApp_Images";
 
     public static final String ICON_FILE = "server_icon.png";
@@ -118,21 +117,19 @@ public class KitchenController {
 
     private void openAdminDashboard() {
         try {
-            // FIXED: Using Absolute Path
             URL url = getClass().getResource("/com/fnb/autoCashierKitchenSystem/admin.fxml");
+            Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/fnb/autoCashierKitchenSystem/utensil.png")));
 
-            if (url != null) {
-                FXMLLoader loader = new FXMLLoader(url);
-                Parent root = loader.load();
-                AdminController adminController = loader.getController();
-                adminController.setKitchenController(this);
-                Stage stage = new Stage();
-                stage.setTitle("Admin Dashboard");
-                stage.setScene(new Scene(root));
-                stage.show();
-            } else {
-                System.err.println("CRITICAL ERROR: admin.fxml not found.");
-            }
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
+            AdminController adminController = loader.getController();
+            adminController.setKitchenController(this);
+            Stage stage = new Stage();
+            stage.setTitle("Dineamic: Admin Dashboard");
+            stage.getIcons().add(icon);
+            stage.setScene(new Scene(root));
+            stage.show();
+
         } catch (IOException e) { e.printStackTrace(); }
     }
 
@@ -255,7 +252,6 @@ public class KitchenController {
     }
 
     private void handleCommand(String command, ObjectOutputStream out) throws IOException {
-        // Handle Image Requests from Cashier
         if (command.startsWith("GET_IMAGE_DATA:")) {
             String requestedFile = command.substring("GET_IMAGE_DATA:".length());
             File file = new File(DATA_DIR, requestedFile);
@@ -324,16 +320,16 @@ public class KitchenController {
             body.getChildren().add(itemLabel);
         }
 
-        Button bumpBtn = new Button("BUMP");
-        bumpBtn.setMaxWidth(Double.MAX_VALUE);
-        bumpBtn.setPrefHeight(40);
-        bumpBtn.getStyleClass().add("bump-btn");
-        bumpBtn.setOnAction(e -> {
+        Button finishBtn = new Button("Finish Order");
+        finishBtn.setMaxWidth(Double.MAX_VALUE);
+        finishBtn.setPrefHeight(40);
+        finishBtn.getStyleClass().add("finish-btn");
+        finishBtn.setOnAction(e -> {
             ticketGrid.getChildren().remove(ticket);
             totalOrdersLabel.setText("Orders: " + ticketGrid.getChildren().size());
         });
 
-        ticket.getChildren().addAll(header, body, bumpBtn);
+        ticket.getChildren().addAll(header, body, finishBtn);
         ticketGrid.getChildren().add(ticket);
         totalOrdersLabel.setText("Orders: " + ticketGrid.getChildren().size());
     }

@@ -26,9 +26,9 @@ public class AddNewMenuController {
 
     private File selectedImageFile;
     private KitchenController kitchenController;
-    // We use a marker string for default icon
+
     private static final String DEFAULT_MARKER = "DEFAULT";
-    private static final String DEFAULT_ICON_PATH = "/utensil-icon.jpg";
+    private static final String DEFAULT_ICON_PATH = "/com/fnb/autoCashierKitchenSystem/utensil.png";
 
     public void setKitchenController(KitchenController controller) {
         this.kitchenController = controller;
@@ -90,14 +90,12 @@ public class AddNewMenuController {
             String imageIdentifier;
 
             if (selectedImageFile != null) {
-                // SAVE ONLY THE FILENAME, NOT THE FULL PATH
                 String savedName = saveImageExternal(selectedImageFile);
                 imageIdentifier = (savedName != null) ? savedName : DEFAULT_MARKER;
             } else {
                 imageIdentifier = DEFAULT_MARKER;
             }
 
-            // Create Order with just the filename (e.g., "burger.png")
             Order newOrder = new Order(name, price, category, imageIdentifier);
 
             if (kitchenController != null) {
@@ -119,13 +117,10 @@ public class AddNewMenuController {
             File appDir = new File(userHome, "CashierApp_Images");
             if (!appDir.exists()) appDir.mkdirs();
 
-            // Create unique filename
             File destFile = getUniqueFile(appDir, sourceFile.getName());
 
-            // Copy file
             Files.copy(sourceFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
-            // RETURN ONLY THE NAME (e.g., "burger(1).jpg")
             return destFile.getName();
         } catch (IOException e) { return null; }
     }

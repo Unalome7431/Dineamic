@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.net.URL;
 
@@ -18,6 +19,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.util.Objects;
 
 public class NetworkController {
     @FXML private TextField ipInput;
@@ -41,20 +43,16 @@ public class NetworkController {
         connectButton.setText("Connecting...");
         connectButton.setDisable(true);
 
-        // Perform network op in background thread to keep UI responsive
         new Thread(() -> {
             try (Socket socket = new Socket()) {
-                // 1. Try Connection (Timeout 2s)
                 socket.connect(new InetSocketAddress(ipAddress, 12345), 2000);
 
                 try (ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
                      ObjectInputStream in = new ObjectInputStream(socket.getInputStream())) {
 
-                    // 2. Send Login Command
                     out.writeObject("LOGIN:" + password);
                     out.flush();
 
-                    // 3. Read Response
                     boolean loginSuccess = in.readBoolean();
 
                     javafx.application.Platform.runLater(() -> {
@@ -81,6 +79,8 @@ public class NetworkController {
     private void switchToCashier(ActionEvent event, String ipAddress) {
         try {
             URL url = getClass().getResource("/com/fnb/autoCashierKitchenSystem/cashier.fxml");
+            Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/fnb/autoCashierKitchenSystem/utensil.png")));
+
 
             FXMLLoader loader = new FXMLLoader(url);
             Parent root = loader.load();
@@ -91,7 +91,8 @@ public class NetworkController {
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
 
-            stage.setTitle("Cashier Station - Main");
+            stage.setTitle("Dineamic: Cashier Station - Main");
+            stage.getIcons().add(icon);
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {

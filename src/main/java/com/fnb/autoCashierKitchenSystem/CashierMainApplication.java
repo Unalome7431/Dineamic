@@ -4,23 +4,24 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.util.Objects;
 
 public class CashierMainApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Ensure the FXML file is named 'ModernLayout.fxml' and is in the same package
         FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
-
-        // We need to manually set the controller factory if you want to pass dependencies, 
-        // but for this simple setup, just ensure your FXML has: fx:controller="CashierController
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/fnb/autoCashierKitchenSystem/utensil.png")));
 
         Parent root = loader.load();
 
         Scene scene = new Scene(root);
 
-        primaryStage.setTitle("Cashier Station - Login Network");
+        primaryStage.setTitle("Dineamic: Cashier Station - Login Network");
+        primaryStage.getIcons().add(icon);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

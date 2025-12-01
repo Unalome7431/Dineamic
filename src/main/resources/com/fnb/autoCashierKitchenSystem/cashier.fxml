@@ -19,16 +19,16 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fnb.autoCashierKitchenSystem.controllers.CashierController">
 
-    <!-- 1. HEADER SECTION -->
     <top>
         <HBox fx:id="headerBar" alignment="CENTER_LEFT" spacing="20.0" styleClass="header-bar" BorderPane.alignment="CENTER">
             <children>
                 <ImageView fx:id="brandLogo" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@mcdonalds-logo-png-1.jpg" />
-                    </image>
+                   <image>
+                      <Image url="@utensil.png" />
+                   </image>
                 </ImageView>
-                <Label fx:id="brandNameLabel" styleClass="header-title" text="Mc'Donalds" />
+
+                <Label fx:id="brandNameLabel" styleClass="header-title" text="Dineamic" />
 
                 <Region HBox.hgrow="ALWAYS" />
 
@@ -42,18 +42,15 @@
         </HBox>
     </top>
 
-    <!-- 2. MAIN CONTENT -->
     <center>
         <HBox spacing="0.0" BorderPane.alignment="CENTER">
             <children>
 
-                <!-- LEFT SIDE: MENU AREA -->
                 <VBox spacing="15.0" HBox.hgrow="ALWAYS">
                     <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                     </padding>
                     <children>
-                        <!-- Category Filter -->
                         <HBox alignment="CENTER_LEFT">
                             <children>
                                 <Label text="Menu Categories" textFill="#374151">
@@ -66,7 +63,6 @@
                             </children>
                         </HBox>
 
-                        <!-- Scrollable Grid -->
                         <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: transparent; -fx-background: transparent;" VBox.vgrow="ALWAYS">
                             <content>
                                 <TilePane fx:id="menuGrid" hgap="15.0" prefColumns="3" vgap="15.0">
@@ -74,7 +70,6 @@
                                         <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
                                     </padding>
                                     <children>
-                                        <!-- Buttons added dynamically -->
                                     </children>
                                 </TilePane>
                             </content>
@@ -82,10 +77,8 @@
                     </children>
                 </VBox>
 
-                <!-- THE FIXED SEPARATOR -->
                 <Separator orientation="VERTICAL" prefHeight="200.0" />
 
-                <!-- RIGHT SIDE: TICKET AREA -->
                 <VBox minWidth="350.0" prefWidth="350.0" spacing="15.0" styleClass="ticket-pane">
                     <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -99,17 +92,14 @@
 
                         <Separator prefWidth="200.0" />
 
-                        <!-- Ticket Items List -->
                         <ListView fx:id="ticketList" styleClass="ticket-list" VBox.vgrow="ALWAYS" />
 
-                        <!-- Footer/Total Section -->
                         <VBox spacing="10.0">
                             <children>
                                 <HBox>
                                     <children>
                                         <Label text="Subtotal" textFill="#6b7280" />
                                         <Region HBox.hgrow="ALWAYS" />
-                                        <!-- ADDED ID HERE -->
                                         <Label fx:id="subtotalLabel" text="\$0.00" textFill="#374151" />
                                     </children>
                                 </HBox>
@@ -117,7 +107,6 @@
                                     <children>
                                         <Label text="Tax (10%)" textFill="#6b7280" />
                                         <Region HBox.hgrow="ALWAYS" />
-                                        <!-- ADDED ID HERE -->
                                         <Label fx:id="taxLabel" text="\$0.00" textFill="#374151" />
                                     </children>
                                 </HBox>
@@ -140,7 +129,6 @@
                             </children>
                         </VBox>
 
-                        <!-- Pay Button -->
                         <Button fx:id="payButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="55.0" styleClass="btn" text="Charge Order" />
                     </children>
                 </VBox>
